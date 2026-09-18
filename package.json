@@ -1,0 +1,11 @@
+{
+  "name": "oneclick-away",
+  "private": true,
+  "version": "9.0.0",
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write static/app.js static/js/*.js",
+    "check": "prettier --check static/app.js static/js/*.js && node --check static/app.js && node --test tests/frontend.test.js"
+  },
+  "devDependencies": { "prettier": "3.6.2" }
+}

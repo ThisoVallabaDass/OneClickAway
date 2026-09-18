@@ -1,0 +1,9 @@
+*
+!requirements.txt
+!backend/
+!backend/**
+!static/
+!static/**
+!scripts/
+!scripts/**
+**/__pycache__/

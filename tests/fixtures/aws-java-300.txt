@@ -1,0 +1,346 @@
+### AWS + Java Backend — 300-Line Learning Content
+
+**Part 1 — AWS & Cloud Fundamentals**
+
+1. Cloud computing provides computing resources over the internet.
+2. AWS stands for Amazon Web Services.
+3. AWS provides compute, storage, databases, networking, security, and managed services.
+4. AWS generally follows a pay-as-you-go pricing model.
+5. An AWS account is a primary administrative and security boundary.
+6. AWS resources are deployed across geographical Regions.
+7. A Region contains multiple Availability Zones.
+8. Availability Zones are isolated infrastructure locations within a Region.
+9. Multi-AZ architecture improves application availability.
+10. AWS Edge Locations help deliver content closer to users.
+11. CloudFront is AWS's Content Delivery Network.
+12. Scalability means increasing or decreasing resources according to workload.
+13. Vertical scaling increases the capacity of an individual server.
+14. Horizontal scaling adds additional servers or instances.
+15. Elasticity automatically adjusts resources according to demand.
+16. High availability keeps applications operational despite component failures.
+17. Fault tolerance allows systems to continue functioning when failures occur.
+18. Disaster recovery restores systems after significant failures.
+19. EC2 is an example of Infrastructure as a Service.
+20. AWS follows a shared responsibility security model.
+
+**Part 2 — IAM & Security**
+
+21. IAM stands for Identity and Access Management.
+22. IAM controls access to AWS resources.
+23. IAM users represent individual identities.
+24. IAM groups organize multiple IAM users.
+25. IAM roles provide temporary permissions.
+26. IAM policies define permissions using JSON documents.
+27. Policies contain elements such as Effect, Action, Resource, and Condition.
+28. Least privilege means granting only the permissions required.
+29. Applications should prefer IAM roles instead of hardcoded credentials.
+30. EC2, Lambda, and ECS workloads can use IAM roles.
+31. MFA adds another authentication factor.
+32. AWS root credentials should be strongly protected.
+33. The root user should not be used for routine administration.
+34. Credentials should never be committed to Git.
+35. Secrets Manager securely stores sensitive credentials.
+36. Parameter Store can store configuration values and secrets.
+37. KMS manages encryption keys.
+38. Encryption at rest protects stored information.
+39. Encryption in transit protects information moving across networks.
+40. Security should be incorporated throughout system design.
+
+**Part 3 — EC2**
+
+41. EC2 stands for Elastic Compute Cloud.
+42. EC2 provides virtual servers in AWS.
+43. An EC2 instance is a virtual machine.
+44. An AMI defines the software configuration used to launch an instance.
+45. Instance types determine CPU, memory, storage, and networking capacity.
+46. General-purpose instances balance CPU and memory.
+47. Compute-optimized instances target CPU-intensive workloads.
+48. Memory-optimized instances provide larger memory capacity.
+49. GPU instances support workloads such as machine learning.
+50. EC2 instances operate within Availability Zones.
+51. EBS provides persistent block storage for EC2.
+52. Security groups control EC2 network traffic.
+53. Security groups are stateful.
+54. SSH normally operates on port 22.
+55. HTTP normally operates on port 80.
+56. HTTPS normally operates on port 443.
+57. Spring Boot commonly runs on port 8080.
+58. Java applications can be packaged as executable JAR files.
+59. Spring Boot applications can run using `java -jar application.jar`.
+60. Production EC2 deployments should be automated.
+
+**Part 4 — S3**
+
+61. S3 stands for Simple Storage Service.
+62. S3 provides highly scalable object storage.
+63. S3 buckets contain objects.
+64. Every object has data, metadata, and an object key.
+65. S3 commonly stores images, documents, backups, logs, and static files.
+66. S3 is object storage rather than a traditional filesystem.
+67. S3 provides extremely high durability.
+68. Versioning preserves multiple versions of objects.
+69. Lifecycle rules automate object storage management.
+70. Lifecycle policies can move objects between storage classes.
+71. S3 supports server-side encryption.
+72. Bucket policies provide resource-based access control.
+73. Block Public Access helps prevent accidental exposure.
+74. Presigned URLs provide temporary controlled object access.
+75. Java backends can generate S3 presigned URLs.
+76. Frontends can upload files directly using presigned URLs.
+77. S3 can host static website assets.
+78. CloudFront can distribute S3 content globally.
+79. S3 events can trigger Lambda functions.
+80. Java applications communicate with S3 through the AWS SDK.
+
+**Part 5 — VPC & Networking**
+
+81. VPC stands for Virtual Private Cloud.
+82. A VPC provides an isolated AWS virtual network.
+83. VPC address ranges are defined using CIDR notation.
+84. A subnet divides the VPC IP address range.
+85. Subnets belong to specific Availability Zones.
+86. Public subnets can route traffic through an Internet Gateway.
+87. Private subnets generally avoid direct inbound internet exposure.
+88. NAT Gateway enables outbound internet connectivity from private subnets.
+89. Route tables determine network traffic paths.
+90. Network ACLs provide subnet-level network controls.
+91. Security groups provide stateful resource-level controls.
+92. Load balancers are commonly deployed in public subnets.
+93. Application servers can operate inside private subnets.
+94. Databases should generally operate inside private subnets.
+95. Database access should be restricted to application resources.
+96. `0.0.0.0/0` should generally not be allowed for database access.
+97. Network segmentation reduces unnecessary exposure.
+98. VPC architecture is fundamental to AWS security.
+99. Security groups should permit only necessary traffic.
+100. Production network architecture should be deliberately designed.
+
+**Part 6 — RDS & DynamoDB**
+
+101. RDS stands for Relational Database Service.
+102. RDS provides managed relational databases.
+103. PostgreSQL and MySQL are commonly used RDS engines.
+104. RDS supports automated backups.
+105. Database snapshots provide recoverable copies.
+106. RDS Multi-AZ improves database availability.
+107. Read replicas can improve read scalability.
+108. Spring Boot applications connect to RDS using JDBC.
+109. Spring Data JPA simplifies relational data access.
+110. Hibernate is commonly used as a JPA implementation.
+111. Database passwords should be stored securely.
+112. Secrets Manager can protect database credentials.
+113. Connection pooling improves database efficiency.
+114. HikariCP is commonly used by Spring Boot.
+115. Database connection limits must be considered when scaling.
+116. DynamoDB is AWS's managed NoSQL database.
+117. DynamoDB stores items inside tables.
+118. Partition keys determine how DynamoDB distributes data.
+119. Composite keys contain partition and sort keys.
+120. Database selection should depend on application access patterns.
+
+**Part 7 — Lambda & API Gateway**
+
+121. Lambda provides serverless compute.
+122. AWS manages the underlying Lambda infrastructure.
+123. Lambda functions execute in response to events.
+124. API Gateway can invoke Lambda functions.
+125. S3 events can trigger Lambda functions.
+126. EventBridge can trigger Lambda functions.
+127. Lambda can consume messages from queues.
+128. Lambda supports Java and several other programming languages.
+129. Lambda automatically scales with incoming workloads.
+130. Lambda functions have configurable memory and execution limits.
+131. Java Lambda applications can experience cold-start overhead.
+132. Lambda is particularly suitable for event-driven workloads.
+133. Long-running applications may fit ECS or EC2 better.
+134. Lambda functions should preferably be idempotent.
+135. Idempotency prevents unintended duplicate effects.
+136. API Gateway exposes managed APIs.
+137. API Gateway can route HTTP requests to backend services.
+138. API Gateway supports authentication and authorization mechanisms.
+139. API Gateway provides throttling and request management.
+140. API Gateway and ALB address different API and traffic-routing requirements.
+
+**Part 8 — Spring Boot + AWS**
+
+141. Spring Boot is widely used for Java backend development.
+142. Spring Boot applications can run on EC2.
+143. Spring Boot applications can also run inside Docker containers.
+144. Spring Boot can communicate with RDS.
+145. Spring Boot can upload files to S3.
+146. Spring Boot can publish messages to SQS.
+147. Spring Boot can publish notifications through SNS.
+148. AWS SDK for Java enables communication with AWS services.
+149. Maven or Gradle can build Spring Boot applications.
+150. Spring Boot applications can be packaged into Docker images.
+151. ECR stores Docker container images.
+152. ECS orchestrates containers.
+153. Fargate runs containers without managing EC2 servers.
+154. A common backend architecture is ALB → ECS → RDS.
+155. Angular applications can be hosted using S3 and CloudFront.
+156. ALB routes API requests to Spring Boot containers.
+157. ECS maintains the required number of containers.
+158. CloudWatch provides application monitoring.
+159. Secrets Manager provides secure application secrets.
+160. ACM provides managed TLS certificates.
+
+**Part 9 — Docker, ECR & ECS**
+
+161. Docker packages applications and dependencies into containers.
+162. Docker images are templates used to create containers.
+163. Containers are running instances of Docker images.
+164. Dockerfiles define image build instructions.
+165. Multi-stage Docker builds can reduce image size.
+166. ECR is AWS's managed container registry.
+167. ECS manages containerized applications.
+168. ECS supports EC2-backed workloads.
+169. ECS also supports AWS Fargate.
+170. Fargate removes underlying server management.
+171. ECS clusters logically group workloads.
+172. ECS task definitions describe container configuration.
+173. Task definitions specify CPU and memory requirements.
+174. Task definitions define container ports.
+175. Task definitions can configure environment variables.
+176. ECS task roles provide AWS permissions to containers.
+177. ECS services maintain a desired task count.
+178. ECS integrates with Application Load Balancers.
+179. ECS replaces unhealthy tasks automatically.
+180. EKS provides managed Kubernetes when Kubernetes capabilities are required.
+
+**Part 10 — Load Balancing & CDN**
+
+181. Elastic Load Balancing distributes incoming traffic.
+182. ALB stands for Application Load Balancer.
+183. ALB handles HTTP and HTTPS traffic.
+184. NLB handles high-performance TCP and UDP workloads.
+185. ALB supports hostname-based routing.
+186. ALB supports path-based routing.
+187. Target groups contain backend application targets.
+188. ECS tasks can operate as ALB targets.
+189. Health checks determine whether targets receive traffic.
+190. Load balancing supports horizontal scaling.
+191. Stateless applications generally scale more easily.
+192. Shared state can be stored using services such as Redis.
+193. CloudFront is AWS's Content Delivery Network.
+194. CloudFront caches content at edge locations.
+195. Edge caching reduces latency.
+196. CloudFront commonly distributes frontend assets.
+197. CloudFront can use S3 as an origin.
+198. Route 53 provides managed DNS.
+199. Route 53 maps domains to application resources.
+200. ACM provides TLS certificates for HTTPS.
+
+**Part 11 — Messaging & Event-Driven Architecture**
+
+201. SQS stands for Simple Queue Service.
+202. SQS provides managed message queues.
+203. Queues decouple application components.
+204. Producers send messages to queues.
+205. Consumers process messages from queues.
+206. Queues help absorb workload spikes.
+207. Standard SQS queues provide high throughput.
+208. FIFO queues support ordered message processing.
+209. Dead-letter queues store repeatedly failing messages.
+210. Visibility timeout controls temporary message invisibility.
+211. SNS stands for Simple Notification Service.
+212. SNS provides publish-subscribe messaging.
+213. SNS topics can distribute messages to multiple subscribers.
+214. EventBridge provides event routing.
+215. Events represent things that occurred within a system.
+216. `OrderCreated` is an example of a domain event.
+217. Multiple services can react to the same event.
+218. Event-driven architectures reduce direct coupling.
+219. Consumers should be designed to handle duplicate messages.
+220. Asynchronous processing improves scalability and responsiveness.
+
+**Part 12 — Monitoring & Security**
+
+221. CloudWatch provides monitoring and observability.
+222. CloudWatch collects infrastructure and application metrics.
+223. CloudWatch Logs centralizes application logs.
+224. CloudWatch Alarms react to metric thresholds.
+225. Spring Boot logs can be centralized in CloudWatch.
+226. CloudTrail records AWS API activity.
+227. CloudTrail provides important auditing information.
+228. AWS Config tracks resource configuration and compliance.
+229. Sensitive information should never be written to logs.
+230. Production systems should have meaningful alerts.
+231. GuardDuty helps detect suspicious AWS activity.
+232. AWS WAF protects web applications from common attack patterns.
+233. AWS Shield provides DDoS protection capabilities.
+234. Security Hub centralizes security findings.
+235. Docker images should be scanned for vulnerabilities.
+236. Java dependencies should receive security updates.
+237. Spring Security can implement application authentication and authorization.
+238. JWT tokens should have appropriate expiration policies.
+239. Backend services must enforce authorization.
+240. Defense in depth applies multiple independent security controls.
+
+**Part 13 — Infrastructure as Code & CI/CD**
+
+241. Infrastructure as Code defines infrastructure using code.
+242. CloudFormation is AWS's native IaC service.
+243. Terraform is another widely used IaC technology.
+244. AWS CDK defines AWS infrastructure using programming languages.
+245. IaC makes infrastructure repeatable.
+246. Infrastructure definitions can be version controlled using Git.
+247. IaC reduces configuration drift.
+248. Production infrastructure should increasingly be automated.
+249. CI stands for Continuous Integration.
+250. CD means Continuous Delivery or Continuous Deployment.
+251. CI pipelines compile and test application changes.
+252. Maven can build Java applications in CI.
+253. Pipelines can execute unit and security tests.
+254. Pipelines can build Docker images.
+255. Docker images can automatically be pushed to ECR.
+256. Deployment pipelines can automatically update ECS.
+257. GitHub Actions can implement CI/CD workflows.
+258. Deployment strategies include rolling, blue-green, and canary deployments.
+259. Production deployments should support rollback.
+260. Automated deployments improve consistency and reliability.
+
+**Part 14 — Architecture & Reliability**
+
+261. Architecture defines how system components interact.
+262. Monoliths package many features into one deployable application.
+263. Microservices divide functionality into independently deployable services.
+264. Microservices introduce additional operational complexity.
+265. A modular monolith can be appropriate for many applications.
+266. SQS and EventBridge can decouple distributed services.
+267. Multi-AZ deployments improve availability.
+268. Backups protect systems against data loss.
+269. RPO defines acceptable data loss during recovery.
+270. RTO defines acceptable recovery duration.
+271. Disaster recovery architecture depends on business requirements.
+272. Caching can improve application performance.
+273. ElastiCache provides managed caching.
+274. Redis is commonly used for distributed caching.
+275. Database indexes can improve query performance.
+276. Load testing identifies application scaling bottlenecks.
+277. Distributed systems must expect network failures.
+278. Retries should use strategies such as exponential backoff.
+279. Circuit breakers help prevent cascading failures.
+280. Observability is essential for distributed architectures.
+
+**Part 15 — Production AWS Mental Model**
+
+281. IAM answers: Who can perform an AWS action?
+282. VPC answers: Where can network traffic flow?
+283. EC2 answers: Where can a virtual server run?
+284. ECS answers: How can containers be orchestrated?
+285. Lambda answers: How can code run without managing servers?
+286. S3 answers: Where should object data be stored?
+287. RDS answers: Where should relational data be stored?
+288. DynamoDB answers: Where should scalable NoSQL data be stored?
+289. SQS answers: How should asynchronous work be queued?
+290. EventBridge answers: How should application events be routed?
+291. ALB answers: How should HTTP traffic be distributed?
+292. CloudFront answers: How should content be delivered globally?
+293. CloudWatch answers: How should system health be observed?
+294. Secrets Manager answers: Where should application secrets be stored?
+295. ECR answers: Where should container images be stored?
+296. CI/CD answers: How should software be released repeatedly and safely?
+297. Scalability asks whether the application can handle increased workload.
+298. Reliability asks whether the application can continue operating during failures.
+299. Security asks whether systems and data are properly protected.
+300. The goal of AWS learning is to design, build, deploy, secure, monitor, and scale real production applications—not simply memorize AWS services.
